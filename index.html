@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Heading Text and Box Color</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="colorBox">
+            <h2 id="heading">Hello World</h2>
+            <button id="changeTextBtn">Klik</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let textIndex = 0;
+            const texts = [
+                'Hello Unhas',
+                'Nama Saya M Farhan Bachtiar',
+                'Angkatan 2022 NIM D121221011'
+            ];
+
+            $('#changeTextBtn').click(function() {
+                textIndex = (textIndex + 1) % texts.length;
+                $('#heading').text(texts[textIndex]);
+            });
+
+            function changeColor() {
+                let r = Math.floor(Math.random() * 256);
+                let g = Math.floor(Math.random() * 256);
+                let b = Math.floor(Math.random() * 256);
+                $('#colorBox').css('background-color', `rgb(${r}, ${g}, ${b})`);
+            }
+
+            setInterval(changeColor, 1000);
+        });
+    </script>
+</body>
+</html>
